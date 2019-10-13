@@ -108,5 +108,5 @@ display_grid(currentGrid)
 print('-'*20)
 display_grid(get_next_grid(currentGrid, RIGHT))
 
-
+# @TODO - add pyautogui move invokes to interact with browser game
 
