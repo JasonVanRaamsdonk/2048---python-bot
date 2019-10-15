@@ -17,10 +17,15 @@ LEFT = 101
 DOWN = 102
 RIGHT = 103
 
-score_grid = [50, 30, 15, 5,
-              30, -10, 0, 0,
-              15, 0, 0, 0,
-              5, 0, 0, 0]
+# score_grid = [40, 30, 15, 5,
+#               30, 20, 10, 0,
+#               15, 10, -10, 0,
+#               5, 0, 0, 0]
+
+score_grid = [30, 50, 50, 30,
+              15, 15, 15, 15,
+              0, 0, 0, 0,
+              0, 0, 0, 0]
 
 
 def get_grid():
@@ -132,13 +137,14 @@ def get_best_move(grid):
     if not move_validation(grid, UP):
         score_up = 0
     if not move_validation(grid, DOWN):
-        score_up = 0
+        score_down = 0
     if not move_validation(grid, LEFT):
-        score_up = 0
+        score_left = 0
     if not move_validation(grid, RIGHT):
-        score_up = 0
+        score_right = 0
 
-    max_score = max(score_up, score_down, score_left, score_right)
+    # max_score = max(score_up, score_down, score_left, score_right)
+    max_score = max(score_up, score_left, score_right)
 
     if score_up == max_score:
         return UP
@@ -159,22 +165,22 @@ def perform_move(move):
     if move == UP:
         pyautogui.keyDown('up')
         print('UP')  # @FIXME - grid get caught in UP move loop
-        time.sleep(0.5)
+        time.sleep(0.05)
         pyautogui.keyUp('up')
     elif move == DOWN:
         pyautogui.keyDown('down')
         print('DOWN')
-        time.sleep(0.5)
+        time.sleep(0.05)
         pyautogui.keyUp('down')
     elif move == LEFT:
         pyautogui.keyDown('left')
         print('LEFT')
-        time.sleep(0.5)
+        time.sleep(0.05)
         pyautogui.keyUp('left')
     else:
         pyautogui.keyDown('right')
         print('RIGHT')
-        time.sleep(0.5)
+        time.sleep(0.05)
         pyautogui.keyUp('right')
 
 
